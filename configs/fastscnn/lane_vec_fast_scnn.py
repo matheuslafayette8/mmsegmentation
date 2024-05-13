@@ -2,11 +2,11 @@ _base_ = [
     '../_base_/models/lane_vec_fast_scnn.py', '../_base_/datasets/coco_lane_vec.py',
     '../_base_/default_runtime.py', '../_base_/schedules/schedule_160k.py'
 ]
-crop_size = (320, 320)
+crop_size = (640, 640)
 data_preprocessor = dict(size=crop_size)
 model = dict(data_preprocessor=data_preprocessor)
 # Re-config the data sampler.
-train_dataloader = dict(batch_size=4, num_workers=4)
+train_dataloader = dict(batch_size=16, num_workers=4)
 val_dataloader = dict(batch_size=1, num_workers=4)
 test_dataloader = val_dataloader
 

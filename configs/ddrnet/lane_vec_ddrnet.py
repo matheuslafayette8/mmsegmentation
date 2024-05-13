@@ -10,7 +10,7 @@ class_weight = [
     1.0023, 0.9539, 0.9843, 1.1116, 0.9037, 1.0865, 1.0955, 1.0865, 1.1529,
     1.0507
 ]
-num_classes = 2
+num_classes = 3
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/ddrnet/pretrain/ddrnet23s-in1kpre_3rdparty-1ccac5b1.pth'  # noqa
 crop_size = (320, 320)
 data_preprocessor = dict(
@@ -60,9 +60,9 @@ model = dict(
     train_cfg=dict(),
     test_cfg=dict(mode='whole'))
 
-train_dataloader = dict(batch_size=6, num_workers=4)
+train_dataloader = dict(batch_size=8, num_workers=4)
 
-iters = 120000
+iters = 100000
 # optimizer
 optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0005)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)
@@ -79,7 +79,7 @@ param_scheduler = [
 
 # training schedule for 120k
 train_cfg = dict(
-    type='IterBasedTrainLoop', max_iters=iters, val_interval=iters // 10)
+    type='IterBasedTrainLoop', max_iters=iters, val_interval=iters // 20)
 val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 default_hooks = dict(
@@ -87,7 +87,7 @@ default_hooks = dict(
     logger=dict(type='LoggerHook', interval=50, log_metric_by_epoch=False),
     param_scheduler=dict(type='ParamSchedulerHook'),
     checkpoint=dict(
-        type='CheckpointHook', by_epoch=False, interval=iters // 10),
+        type='CheckpointHook', by_epoch=False, interval=iters // 20),
     sampler_seed=dict(type='DistSamplerSeedHook'),
     visualization=dict(type='SegVisualizationHook'))
 

@@ -8,14 +8,14 @@ data_preprocessor = dict(size=crop_size)
 norm_cfg = dict(type='SyncBN', requires_grad=True)
 model = dict(
     data_preprocessor=data_preprocessor,
-    decode_head=dict(num_classes=2),
+    decode_head=dict(num_classes=3),
     auxiliary_head=[
         dict(
             type='FCNHead',
             in_channels=128,
             channels=64,
             num_convs=1,
-            num_classes=2,
+            num_classes=3,
             in_index=1,
             norm_cfg=norm_cfg,
             concat_input=False,
@@ -27,7 +27,7 @@ model = dict(
             in_channels=128,
             channels=64,
             num_convs=1,
-            num_classes=2,
+            num_classes=3,
             in_index=2,
             norm_cfg=norm_cfg,
             concat_input=False,

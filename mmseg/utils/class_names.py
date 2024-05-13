@@ -472,6 +472,16 @@ def bdd100k_palette():
             [255, 0, 0], [0, 0, 142], [0, 0, 70], [0, 60, 100], [0, 80, 100],
             [0, 0, 230], [119, 11, 32]]
 
+def bev_classes():
+    """BEV dataset class names for external use."""
+    return [
+        'background','continuous_lane', 'dashed_lane', 'road_edge'
+    ]
+
+def bev_palette():
+    """BEV dataset palette for external use."""
+    return [[0,0,0], [255,0,0], [0,255,0], [0,0,255]]
+
 
 dataset_aliases = {
     'cityscapes': ['cityscapes'],
@@ -491,7 +501,8 @@ dataset_aliases = {
     'lip': ['LIP', 'lip'],
     'mapillary_v1': ['mapillary_v1'],
     'mapillary_v2': ['mapillary_v2'],
-    'bdd100k': ['bdd100k']
+    'bdd100k': ['bdd100k'],
+    'bev': ['bev'],
 }
 
 

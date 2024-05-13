@@ -16,8 +16,8 @@ class COCOLaneVecDataset(BaseSegDataset):
     """
     METAINFO = dict(
         classes=(
-            'Roadside', 'Road'),
-        palette=[[255, 255, 255], [0, 0, 0]])
+            'Background', 'Road', 'Roadside'),
+        palette=[[0, 0, 0], [255, 255, 255], [0, 0, 255]])
 
     def __init__(self,
                  img_suffix='.jpg',
